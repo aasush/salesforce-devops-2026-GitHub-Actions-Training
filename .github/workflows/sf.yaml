@@ -20,4 +20,4 @@ jobs:
         run: sf plugins install code-analyzer
 
       - name: Authorize salesforce org
-        run: sf org login web --alias Myprodorg
+        run: sf org login sfdx-url --sfdx-url-file auth.txt --alias Myprodorg
