@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v7.0.1
-        
+
       - name: "Set-Up Salesforce CLI" 
         run: npm install --global @salesforce/cli
 
@@ -23,4 +23,7 @@ jobs:
         run: sf plugins install code-analyzer
 
       - name: Authorize salesforce org
-        run: sf org login sfdx-url --sfdx-url-file auth.txt --alias Myprodorg
+        run: |
+          echo "${{ secrets.SFDX_AUTH_URL }}" > auth.txt
+          sf org login sfdx-url --sfdx-url-file auth.txt --alias Myprodorg
+          rm auth.txt
