@@ -24,7 +24,7 @@ jobs:
       - name: "Install Salesforce code analyzer"
         run: sf plugins install code-analyzer
 
-      - name: Authorize salesforce orgs
+      - name: Authorize salesforce org
         run: |
           echo "${{ secrets.SFDX_AUTH_URL }}" > auth.txt
           sf org login sfdx-url --sfdx-url-file auth.txt --alias Myprodorg
