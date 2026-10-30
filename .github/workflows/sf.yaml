@@ -1,0 +1,23 @@
+name: "salesforce-pipeline"
+run-name: "salesforce pipeline run"
+
+on:
+  push:
+
+jobs:
+  setup-salesforce:
+    name: "setup salesforce"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: "Set-Up Salesforce CLI" 
+        run: npm install --global @salesforce/cli
+
+      - name: " check the latest version SF CLI"
+        run: sf --version
+
+      - name: "Install Salesforce code analyzer"
+        run: sf plugins install code-analyzer
+
+      - name: Authorize salesforce org
+        run: sf org login web --alias Myprodorg
